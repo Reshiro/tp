@@ -55,8 +55,8 @@ public class Person {
         Objects.requireNonNull(bookingTags);
         Objects.requireNonNull(tags);
         this.name = name;
-        this.phone = phoneOpt.orElse(new Phone("+65 9999 9999"));
-        this.email = emailOpt.orElse(new Email("default@example.com"));
+        this.phone = phoneOpt.orElse(new Phone("+1 0000000"));
+        this.email = emailOpt.orElse(new Email("no@email.provided"));
         this.address = addressOpt.orElse(new Address("No address provided"));
         this.bookingTags.addAll(bookingTags);
         this.tags.addAll(tags);
@@ -89,8 +89,8 @@ public class Person {
         Objects.requireNonNull(bookingTags);
         Objects.requireNonNull(tags);
         this.name = name;
-        this.phone = phoneOpt.orElse(new Phone("+65 9999 9999"));
-        this.email = emailOpt.orElse(new Email("default@example.com"));
+        this.phone = phoneOpt.orElse(new Phone("+1 0000000"));
+        this.email = emailOpt.orElse(new Email("no@email.provided"));
         this.address = addressOpt.orElse(new Address("No address provided"));
         this.bookingTags.addAll(bookingTags);
         this.tags.addAll(tags);
