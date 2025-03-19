@@ -8,6 +8,7 @@ import static seedu.innsync.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.innsync.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.innsync.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -37,19 +38,49 @@ public class AddCommandParser implements Parser<AddCommand> {
                     args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
                     PREFIX_ADDRESS, PREFIX_BOOKINGTAG, PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
+        // Verify no duplicate prefixes for the provided fields
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS);
+        
+        // Name is required
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
-        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        
+        // Phone, email, and address are optional
+        Optional<Phone> phoneOpt = argMultimap.getValue(PREFIX_PHONE)
+                .map(phone -> {
+                    try {
+                        return ParserUtil.parsePhone(phone);
+                    } catch (ParseException e) {
+                        return null;
+                    }
+                });
+        
+        Optional<Email> emailOpt = argMultimap.getValue(PREFIX_EMAIL)
+                .map(email -> {
+                    try {
+                        return ParserUtil.parseEmail(email);
+                    } catch (ParseException e) {
+                        return null;
+                    }
+                });
+        
+        Optional<Address> addressOpt = argMultimap.getValue(PREFIX_ADDRESS)
+                .map(address -> {
+                    try {
+                        return ParserUtil.parseAddress(address);
+                    } catch (ParseException e) {
+                        return null;
+                    }
+                });
+        
         Set<BookingTag> bookingTagList = ParserUtil.parseBookingTags(argMultimap.getAllValues(PREFIX_BOOKINGTAG));
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        Person person = new Person(name, phone, email, address, bookingTagList, tagList);
+        
+        Person person = new Person(name, phoneOpt, emailOpt, addressOpt, bookingTagList, tagList);
 
         return new AddCommand(person);
     }

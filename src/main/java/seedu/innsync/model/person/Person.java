@@ -5,6 +5,7 @@ import static seedu.innsync.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 import seedu.innsync.commons.util.ToStringBuilder;
@@ -44,6 +45,25 @@ public class Person {
     }
 
     /**
+     * Name must be present and not null.
+     * Phone, email, and address may be null, in which case they will be replaced with default values.
+     * Every other field must be present and not null.
+     */
+    public Person(Name name, Optional<Phone> phoneOpt, Optional<Email> emailOpt, Optional<Address> addressOpt,
+                 Set<BookingTag> bookingTags, Set<Tag> tags) {
+        Objects.requireNonNull(name);
+        Objects.requireNonNull(bookingTags);
+        Objects.requireNonNull(tags);
+        this.name = name;
+        this.phone = phoneOpt.orElse(new Phone("+65 9999 9999"));
+        this.email = emailOpt.orElse(new Email("default@example.com"));
+        this.address = addressOpt.orElse(new Address("No address provided"));
+        this.bookingTags.addAll(bookingTags);
+        this.tags.addAll(tags);
+        this.starred = false;
+    }
+
+    /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<BookingTag> bookingTags,
@@ -53,6 +73,25 @@ public class Person {
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.bookingTags.addAll(bookingTags);
+        this.tags.addAll(tags);
+        this.starred = starred;
+    }
+
+    /**
+     * Name must be present and not null.
+     * Phone, email, and address may be null, in which case they will be replaced with default values.
+     * Every other field must be present and not null.
+     */
+    public Person(Name name, Optional<Phone> phoneOpt, Optional<Email> emailOpt, Optional<Address> addressOpt,
+                 Set<BookingTag> bookingTags, Set<Tag> tags, boolean starred) {
+        Objects.requireNonNull(name);
+        Objects.requireNonNull(bookingTags);
+        Objects.requireNonNull(tags);
+        this.name = name;
+        this.phone = phoneOpt.orElse(new Phone("+65 9999 9999"));
+        this.email = emailOpt.orElse(new Email("default@example.com"));
+        this.address = addressOpt.orElse(new Address("No address provided"));
         this.bookingTags.addAll(bookingTags);
         this.tags.addAll(tags);
         this.starred = starred;
