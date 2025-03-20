@@ -368,6 +368,36 @@
     -fx-background-color: #ffffff;
 }
 
+.detail-tag {
+    -fx-text-fill: white;
+    color: white;
+    -fx-background-color: #FF5A60;
+    background-color: #FF5A60;
+    -fx-padding: 1 3 1 3;
+    padding: 1px 3px 1px 3px;
+    -fx-border-radius: 2;
+    border-radius: 2px;
+    -fx-background-radius: 2;
+    background-radius: 2px;
+    -fx-font-size: 11;
+    font-size: 11px;
+}
+
+.detail-booking-tag {
+    -fx-text-fill: white;
+    color: white;
+    -fx-background-color: #FF5A60;
+    background-color: #FF5A60;
+    -fx-padding: 1 3 1 3;
+    padding: 1px 3px 1px 3px;
+    -fx-border-radius: 2;
+    border-radius: 2px;
+    -fx-background-radius: 2;
+    background-radius: 2px;
+    -fx-font-size: 11;
+    font-size: 11px;
+}
+
 .detail-name {
     -fx-font-size: 26px;
     -fx-font-family: "Segoe UI Semibold";
