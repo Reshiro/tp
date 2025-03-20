@@ -2,6 +2,7 @@ package seedu.innsync.ui;
 
 // import java.util.logging.Logger;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -19,14 +20,23 @@ public class PersonListPanel extends UiPart<Region> {
 
     @FXML
     private ListView<Person> personListView;
+    
+    @FXML
+    private ListView<Person> leftPersonListView;
 
     /**
      * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
      */
     public PersonListPanel(ObservableList<Person> personList) {
         super(FXML);
+        
+        // Configure right list view
         personListView.setItems(personList);
         personListView.setCellFactory(listView -> new PersonListViewCell());
+        
+        // Configure left list view
+        leftPersonListView.setItems(FXCollections.observableArrayList());
+        leftPersonListView.setCellFactory(listView -> new PersonListViewCell());
     }
 
     /**
