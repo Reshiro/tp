@@ -34,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private PersonDetailPanel personDetailPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -115,6 +116,13 @@ public class MainWindow extends UiPart<Stage> {
     void fillInnerParts() {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+
+        // Initialize person detail panel and add it to left panel
+        personDetailPanel = new PersonDetailPanel();
+        leftPanelPlaceholder.getChildren().add(personDetailPanel.getRoot());
+        
+        // Connect person list selection to detail panel
+        personListPanel.setSelectionConsumer(person -> personDetailPanel.setPerson(person));
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

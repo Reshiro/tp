@@ -154,7 +154,7 @@
 }
 
 .result-display .label {
-    -fx-text-fill: black !important;
+    -fx-text-fill: white !important;
 }
 
 .status-bar .label {
@@ -366,3 +366,63 @@
     -fx-font-size: 11;
 }
 
+/* Styles for Person Detail Panel */
+.detail-panel {
+    -fx-background-color: derive(#1d1d1d, 20%);
+}
+
+.detail-name {
+    -fx-font-size: 18pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.detail-label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #999999;
+}
+
+.detail-value {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI";
+    -fx-text-fill: white;
+}
+
+.detail-section {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #616161;
+    -fx-padding: 0 0 5 0;
+}
+
+.detail-tag {
+    -fx-text-fill: white;
+    -fx-background-color: #3e7b91;
+    -fx-padding: 1 8 1 8;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-font-size: 11;
+    -fx-margin: 2;
+}
+
+.detail-booking-tag {
+    -fx-text-fill: white;
+    -fx-background-color: #6B5B95;
+    -fx-padding: 1 8 1 8;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-font-size: 11;
+    -fx-margin: 2;
+}
+
+.placeholder-text {
+    -fx-font-size: 14pt;
+    -fx-font-family: "Segoe UI Italic";
+    -fx-text-fill: #616161;
+}
+
+.error {
+    -fx-text-fill: #d06651 !important; /* The error class should stay at the bottom of the css file. */
+}
