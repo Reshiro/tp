@@ -158,7 +158,7 @@ First-time users are strongly encouraged to read the Quick Start section before 
 ### 3.2 Graphical User Interface Layout:
 
 #### 3.2.1 User Interface Overview:
-![Ui](images/Ui.png)
+![Ui](images/Ui_2.png)
 - ADD LABEL, PLACEHOLDER
 #### 3.2.2 Other UI Components:
 - PLACEHOLDER
