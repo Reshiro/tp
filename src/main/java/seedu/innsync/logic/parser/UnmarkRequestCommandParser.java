@@ -7,6 +7,7 @@ import static seedu.innsync.logic.parser.CliSyntax.PREFIX_REQUEST;
 import seedu.innsync.commons.core.index.Index;
 import seedu.innsync.commons.exceptions.IllegalValueException;
 import seedu.innsync.logic.Messages;
+import seedu.innsync.logic.commands.RequestCommand;
 import seedu.innsync.logic.commands.UnmarkRequestCommand;
 import seedu.innsync.logic.parser.exceptions.ParseException;
 
@@ -42,7 +43,7 @@ public class UnmarkRequestCommandParser implements Parser<UnmarkRequestCommand> 
         } catch (IllegalValueException ive) {
             if (ive.getMessage().equals(ParserUtil.MESSAGE_INVALID_INDEX)) {
                 throw new ParseException(String.format(Messages.MESSAGE_PARSE_EXCEPTION,
-                    "Request index is not a non-zero unsigned integer.", UnmarkRequestCommand.MESSAGE_USAGE), ive);
+                    RequestCommand.MESSAGE_INVALID_REQUEST_INDEX, UnmarkRequestCommand.MESSAGE_USAGE), ive);
             }
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     UnmarkRequestCommand.MESSAGE_USAGE), ive);

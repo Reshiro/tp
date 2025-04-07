@@ -34,6 +34,7 @@ public class RequestCommand extends Command {
             "Add request", "Added request to %s!");
     public static final String MESSAGE_DUPLICATE_REQUEST = String.format(Messages.MESSAGE_DUPLICATE_FIELD,
             "request");
+    public static final String MESSAGE_INVALID_REQUEST_INDEX = "Request index is not a non-zero unsigned integer.";
 
 
     private final Index index;

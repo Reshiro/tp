@@ -6,6 +6,7 @@ import static seedu.innsync.logic.parser.CliSyntax.PREFIX_REQUEST;
 import seedu.innsync.commons.core.index.Index;
 import seedu.innsync.logic.Messages;
 import seedu.innsync.logic.commands.DeleteRequestCommand;
+import seedu.innsync.logic.commands.RequestCommand;
 import seedu.innsync.logic.parser.exceptions.ParseException;
 
 /**
@@ -40,7 +41,7 @@ public class DeleteRequestCommandParser implements Parser<DeleteRequestCommand> 
         } catch (ParseException pe) {
             if (pe.getMessage().equals(ParserUtil.MESSAGE_INVALID_INDEX)) {
                 throw new ParseException(String.format(Messages.MESSAGE_PARSE_EXCEPTION,
-                    "Request index is not a non-zero unsigned integer.", DeleteRequestCommand.MESSAGE_USAGE), pe);
+                    RequestCommand.MESSAGE_INVALID_REQUEST_INDEX, DeleteRequestCommand.MESSAGE_USAGE), pe);
             }
             throw new ParseException(String.format(Messages.MESSAGE_PARSE_EXCEPTION,
                     pe.getMessage(), DeleteRequestCommand.MESSAGE_USAGE), pe);

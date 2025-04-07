@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import seedu.innsync.commons.core.index.Index;
 import seedu.innsync.logic.Messages;
 import seedu.innsync.logic.commands.MarkRequestCommand;
+import seedu.innsync.logic.commands.RequestCommand;
 
 public class MarkRequestCommandParserTest {
 
@@ -44,8 +45,16 @@ public class MarkRequestCommandParserTest {
 
     @Test
     public void parse_invalidRequestIndex_throwsParseException() {
-        String exceedMaxInt = "2147483648";
-        assertParseFailure(parser, "1 r/" + exceedMaxInt, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                MarkRequestCommand.MESSAGE_USAGE));
+        // Invalid - alphabetic
+        assertParseFailure(parser, "1 r/a", String.format(MESSAGE_PARSE_EXCEPTION,
+                RequestCommand.MESSAGE_INVALID_REQUEST_INDEX, MarkRequestCommand.MESSAGE_USAGE));
+                
+        // Invalid - zero
+        assertParseFailure(parser, "1 r/0", String.format(MESSAGE_PARSE_EXCEPTION,
+                RequestCommand.MESSAGE_INVALID_REQUEST_INDEX, MarkRequestCommand.MESSAGE_USAGE));
+                
+        // Invalid - negative
+        assertParseFailure(parser, "1 r/-1", String.format(MESSAGE_PARSE_EXCEPTION,
+                RequestCommand.MESSAGE_INVALID_REQUEST_INDEX, MarkRequestCommand.MESSAGE_USAGE));
     }
 }
