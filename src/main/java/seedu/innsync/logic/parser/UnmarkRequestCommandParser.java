@@ -40,6 +40,10 @@ public class UnmarkRequestCommandParser implements Parser<UnmarkRequestCommand> 
         try {
             requestIndex = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_REQUEST).orElse("1"));
         } catch (IllegalValueException ive) {
+            if (ive.getMessage().equals(ParserUtil.MESSAGE_INVALID_INDEX)) {
+                throw new ParseException(String.format(Messages.MESSAGE_PARSE_EXCEPTION,
+                    "Request index is not a non-zero unsigned integer.", UnmarkRequestCommand.MESSAGE_USAGE), ive);
+            }
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     UnmarkRequestCommand.MESSAGE_USAGE), ive);
         }

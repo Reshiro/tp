@@ -25,7 +25,7 @@ public class MarkRequestCommand extends Command {
     public static final String COMMAND_WORD = "mark";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Marks a request of the contact identified by the index number"
+            + ": Marks a request of the contact identified by the index number "
             + "in the displayed person list as completed.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_REQUEST + "REQUEST_INDEX (must be a positive integer)\n"

@@ -38,6 +38,10 @@ public class DeleteRequestCommandParser implements Parser<DeleteRequestCommand> 
         try {
             requestIndex = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_REQUEST).get());
         } catch (ParseException pe) {
+            if (pe.getMessage().equals(ParserUtil.MESSAGE_INVALID_INDEX)) {
+                throw new ParseException(String.format(Messages.MESSAGE_PARSE_EXCEPTION,
+                    "Request index is not a non-zero unsigned integer.", DeleteRequestCommand.MESSAGE_USAGE), pe);
+            }
             throw new ParseException(String.format(Messages.MESSAGE_PARSE_EXCEPTION,
                     pe.getMessage(), DeleteRequestCommand.MESSAGE_USAGE), pe);
         }

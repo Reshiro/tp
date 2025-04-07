@@ -24,7 +24,7 @@ public class UnmarkRequestCommand extends Command {
     public static final String COMMAND_WORD = "unmark";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Unmarks a request of the contact identified by the index number"
+            + ": Unmarks a request of the contact identified by the index number "
             + "in the displayed person list from its completion status.\n"
             + "Parameters: INDEX (must be a positive integer) " + PREFIX_REQUEST
             + "REQUEST_INDEX (must be a positive integer)\n"
